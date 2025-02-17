@@ -1,7 +1,8 @@
-import {Text, TouchableOpacity, View, ActivityIndicator} from 'react-native';
-import {useThemeStore} from '../../storage/storage';
-import styles from './Styles';
+import React from 'react';
+import styled from 'styled-components/native';
 import {Font, Padding, TextColor, Type} from './types';
+import { useThemeStore } from '../../storage/storage';
+import { ButtonLoading, ButtonText, Container, LoadingIndicator, StyledButton } from './Styles';
 
 interface ButtonProps {
   onPress: () => void;
@@ -26,78 +27,24 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
   buttonColor,
 }) => {
-  const buttonType = useThemeStore(state => state.buttonType);
-
-  const appliedType = type || buttonType;
-
-  const typeStyles = {
-    primary: styles.primary,
-    succes: styles.succes,
-    warning: styles.warning,
-    secondary: styles.secondary,
-    tertiary: styles.tertiary,
-    neutral: styles.neutral,
-  };
-
-  const paddingStyles = {
-    sm: styles.padding_sm,
-    lg: styles.padding_lg,
-  };
-
-  const fontStyles = {
-    medium: styles.font_medium,
-    bold: styles.font_bold,
-  };
-
-  const textColorStyles = {
-    primary: styles.textColorPrimary,
-    secondary: styles.textColorSecondary,
-  };
-
-  const dynamicButtonStyles = [
-    styles.btn_style,
-    typeStyles[appliedType],
-    loading || disabled ? styles.disabled : {},
-    buttonColor ? {backgroundColor: buttonColor} : {},
-  ];
+  const appliedType = useThemeStore(state => state.buttonType);
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={dynamicButtonStyles}
-        onPress={onPress}
-        disabled={loading || disabled}>
+    <Container>
+      <StyledButton onPress={onPress} disabled={loading || disabled} appliedType={appliedType} buttonColor={buttonColor}>
         {loading ? (
-          <View style={styles.buttonLoading}>
-            <Text
-              style={[
-                styles.btn_text,
-                textColorStyles[textColor],
-                paddingStyles[padding],
-                fontStyles[font],
-              ]}>
+          <ButtonLoading>
+            <ButtonText textColor={textColor} font={font} padding={padding}>
               {text}
-            </Text>
-            <ActivityIndicator
-              style={styles.loading}
-              size="small"
-              color="white"
-            />
-          </View>
+            </ButtonText>
+            <LoadingIndicator size="small" color="white" />
+          </ButtonLoading>
         ) : (
-          <>
-            <Text
-              style={[
-                styles.btn_text,
-                textColorStyles[textColor],
-                paddingStyles[padding],
-                fontStyles[font],
-              ]}>
-              {text}
-            </Text>
-          </>
+          <ButtonText textColor={textColor} font={font} padding={padding}>
+            {text}
+          </ButtonText>
         )}
-      </TouchableOpacity>
-    </View>
+      </StyledButton>
+    </Container>
   );
 };

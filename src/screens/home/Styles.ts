@@ -1,24 +1,20 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  backgroundImage: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    padding: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-  },
-  text: {
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    bottom: 40,
-    gap: 40
-  },
-});
 
-export default styles;
+const BackgroundImage = styled.ImageBackground`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+const TextContainer = styled.View`
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+`;
+
+
+
+export { BackgroundImage, TextContainer};

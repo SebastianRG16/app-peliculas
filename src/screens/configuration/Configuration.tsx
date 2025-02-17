@@ -1,8 +1,15 @@
 import React, {useState} from 'react';
-import {Text, View, TextInput, Button, TouchableOpacity} from 'react-native';
 import {useThemeStore} from '../../storage/storage';
-import {TextCom} from '../../components/text/TextCom';
-import styles from './Styles';
+import {
+  ButtonContainer,
+  ButtonText,
+  ColorButton,
+  Container,
+  Navbar,
+  Section,
+  StyledButton,
+} from './Styles';
+import {Text} from '../../components/text/StylesText';
 
 export type Type =
   | 'succes'
@@ -30,34 +37,28 @@ export const Configuration = () => {
   const navbarColors = ['#000000', '#FFFFFF', '#808080', '#0000FF'];
 
   return (
-    <View style={styles.container}>
-      <TextCom
-        text="CONFIGURACION"
-        size="xl1"
-        center="center"
-        fontVariant="bold"
-      />
+    <Container>
+      <Text size="xl2" center="center" fontVariant="bold">
+        CONFIGURACION
+      </Text>
 
-      <View style={styles.containerSecondarys}>
-        <TextCom text="Color de la barra de navegación:" size="sm2" />
-        <View style={styles.navbar}>
+      <Section>
+        <Text size="md"> Color de la barra de navegación:</Text>
+        <Navbar>
           {navbarColors.map(color => (
-            <TouchableOpacity
-            key={color}
-            onPress={() => handleNavbarColorSelection(color)}
-            style={[
-              styles.colorButton,
-              { backgroundColor: color },
-              selectedNavbarColor === color ? styles.selectedColorButton : null,
-            ]}
-          />
+            <ColorButton
+              key={color}
+              onPress={() => handleNavbarColorSelection(color)}
+              backgroundColor={color}
+              isSelected={selectedNavbarColor === color}
+            />
           ))}
-        </View>
-      </View>
-      <View style={{marginVertical: 20}}>
-        <TextCom text="Tipo de botón:" size="sm2" />
-        <View
-          style={{flexDirection: 'row', flexWrap: 'wrap', marginBottom: 10}}>
+        </Navbar>
+      </Section>
+
+      <Section>
+        <Text size="md"> Tipo de botón:</Text>
+        <ButtonContainer>
           {[
             'succes',
             'primary',
@@ -66,22 +67,17 @@ export const Configuration = () => {
             'tertiary',
             'neutral',
           ].map(type => (
-            <TouchableOpacity
+            <StyledButton
               key={type}
               onPress={() => handleButtonTypeChange(type as Type)}
-              style={[
-                styles.button,
-                selectedButtonType === type
-                  ? styles.buttonSelected
-                  : styles.buttonUnselected,
-              ]}>
-              <Text style={styles.buttonText}>
+              isSelected={selectedButtonType === type}>
+              <ButtonText>
                 {type.charAt(0).toUpperCase() + type.slice(1)}
-              </Text>
-            </TouchableOpacity>
+              </ButtonText>
+            </StyledButton>
           ))}
-        </View>
-      </View>
-    </View>
+        </ButtonContainer>
+      </Section>
+    </Container>
   );
 };
