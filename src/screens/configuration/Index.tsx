@@ -10,6 +10,7 @@ import {
   StyledButton,
 } from './Styles';
 import {Text} from '../../components/text/StylesText';
+import {theme} from '../../theme/theme';
 
 export type Type =
   | 'succes'
@@ -34,7 +35,12 @@ export const Configuration = () => {
     setNavbarColor(color);
   };
 
-  const navbarColors = ['#000000', '#FFFFFF', '#808080', '#0000FF'];
+  const navbarColors = [
+    theme.color.black,
+    theme.color.white,
+    theme.color.gray,
+    theme.color.blue,
+  ];
 
   return (
     <Container>
@@ -60,7 +66,7 @@ export const Configuration = () => {
         <Text size="md"> Tipo de botón:</Text>
         <ButtonContainer>
           {[
-            'succes',
+            'success',
             'primary',
             'warning',
             'secondary',

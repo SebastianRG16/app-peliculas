@@ -1,15 +1,15 @@
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
-import {useMovieStore} from '../../storage/storage';
+import {useMovieStore} from '../../../storage/storage';
 import {
   ButtonBackTo,
   Container,
   Description,
   Poster,
-} from './Styles';
-import {Button} from '../../components/buttons/Button';
+} from '../Styles';
+import {Button} from '../../../components/buttons/Index';
 import {useNavigation} from '@react-navigation/native';
-import { Text } from '../../components/text/StylesText';
+import { Text } from '../../../components/text/StylesText';
 
 export const MovieId = () => {
   const {movies} = useMovieStore();

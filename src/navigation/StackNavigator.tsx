@@ -2,10 +2,10 @@ import React, {useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Pressable, Text, View} from 'react-native';
-import {Home} from '../screens/home/Home';
-import {Configuration} from '../screens/configuration/Configuration';
-import {Movies} from '../screens/movies/Movies';
-import {MovieId} from '../screens/movies/MovieId';
+import {Home} from '../screens/home/Index';
+import {Configuration} from '../screens/configuration/Index';
+import {Movies} from '../screens/movies/Index';
+import {MovieId} from '../screens/movies/movieId/Index';
 import {useThemeStore} from '../storage/storage';
 
 const Stack = createStackNavigator<RootStackParamList>();

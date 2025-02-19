@@ -30,11 +30,18 @@ declare module 'styled-components/native' {
   export {styled};
 }
 
-
 declare module 'styled-components/native' {
   import {TouchableOpacity} from 'react-native';
   import styled from 'styled-components';
 
   export const TouchableOpacity: typeof styled.TouchableOpacity;
+  export {styled};
+}
+
+declare module 'styled-components/native' {
+  import {TextInput} from 'react-native';
+  import styled from 'styled-components';
+
+  export const TextInput: typeof styled.TextInput;
   export {styled};
 }

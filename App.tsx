@@ -1,15 +1,17 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { MyStack } from './src/navigation/StackNavigator';
-import { useThemeStore } from './src/storage/storage';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import {NavigationContainer} from '@react-navigation/native';
+import {MyStack} from './src/navigation/StackNavigator';
+import {useThemeStore} from './src/storage/storage';
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import {ThemeProvider} from 'styled-components/native';
+import {theme} from './src/theme/theme';
 
 // Crear una instancia del QueryClient
 const queryClient = new QueryClient();
 
 const App = () => {
-  const { loadTheme } = useThemeStore();
+  const {loadTheme} = useThemeStore();
 
   useEffect(() => {
     loadTheme();
@@ -17,9 +19,11 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationContainer>
-        <MyStack />
-      </NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <MyStack />
+        </NavigationContainer>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };

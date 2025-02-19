@@ -11,8 +11,8 @@ const TextContainer = styled.View`
   flex: 1;
   justify-content: flex-end;
   align-items: center;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.4);
+  padding: ${({ theme }: any) => theme.spacing.padding};
+  background-color: ${({ theme }: any) => theme.color.overlay};
 `;
 
 
