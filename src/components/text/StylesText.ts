@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { theme } from '../../theme/theme';
 
 type SizeKey = keyof typeof fontSizes;
 type ColorKey = keyof typeof colorTheme;
@@ -13,27 +14,27 @@ interface TextProps {
 }
 
 const fontSizes = {
-  xl2: 32,
-  xl: 28,
-  lg: 24,
-  md: 18,
-  sm3: 14,
-  sm: 12,
+  xl2: theme.sizes.xl2,
+  xl: theme.sizes.xl,
+  lg: theme.sizes.lg,
+  md: theme.sizes.md,
+  sm3: theme.sizes.sm3,
+  sm: theme.sizes.sm,
 };
 
 const colorTheme = {
-  primary: 'black',
-  secondary: 'white',
+  primary: theme.color.black,
+  secondary: theme.color.white,
 };
 
 const fontTheme = {
-  bold: 'bold',
-  medium: 'medium',
+  bold: theme.font.bold,
+  medium: theme.font.medium,
 };
 
 const alingTheme = {
-  center: 'center',
-  start: 'start',
+  center: theme.aling.center,
+  start: theme.aling.start,
 };
 
 export const Text = styled.Text<TextProps>`
